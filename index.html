@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pro BI LLC | Insurance That Works For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --orange: #FF6B00;
+      --red: #D92B2B;
+      --yellow: #FFD600;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --charcoal: #1E1E1E;
+      --white: #FFFFFF;
+      --gray: #9A9A9A;
+      --light-gray: rgba(255,255,255,0.72);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6%;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--orange);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--yellow);
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+    }
+
+    .nav-cta:hover {
+      background: var(--yellow);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 3px;
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 6% 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      top: 0;
+      right: -4%;
+      width: 52%;
+      height: 100%;
+      background: linear-gradient(150deg, var(--orange) 0%, var(--red) 55%, #6e0000 100%);
+      clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+
+    .hero-bg-shape::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='0.07'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 24%;
+      left: 3%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(255,107,0,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 7vw, 6.4rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .accent { color: var(--orange); }
+    .hero-title .accent2 { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--light-gray);
+      line-height: 1.85;
+      max-width: 560px;
+      margin-bottom: 18px;
+    }
+
+    .hero-trust {
+      color: var(--yellow);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 34px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 16px 34px;
+      border-radius: 4px;
+      display: inline-block;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.28);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 34px;
+      border-radius: 4px;
+      display: inline-block;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: 6%;
+      bottom: 11%;
+      z-index: 3;
+      display: flex;
+      gap: 36px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(0,0,0,0.7);
+      font-weight: 700;
+    }
+
+    .ticker {
+      background: var(--yellow);
+      color: var(--black);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 22s linear infinite;
+    }
+
+    .ticker-track span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 24px;
+    }
+
+    .ticker-dot {
+      color: var(--orange);
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    section {
+      padding: 100px 6%;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 4.6vw, 4rem);
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    #services {
+      background: var(--dark);
+    }
+
+    .services-header {
+      max-width: 700px;
+      margin-bottom: 52px;
+    }
+
+    .services-header p {
+      color: rgba(255,255,255,0.64);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      padding: 36px 28px;
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      border-radius: 6px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,107,0,0.4);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+      border-radius: 0 0 6px 6px;
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 6px;
+      background: rgba(255,107,0,0.10);
+      border: 2px solid rgba(255,107,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 22px;
+    }
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.60);
+    }
+
+    #why {
+      background: var(--black);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+      height: 460px;
+    }
+
+    .why-card-big {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80%;
+      height: 300px;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      border-radius: 6px;
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .why-card-big-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1.05;
+      letter-spacing: 2px;
+    }
+
+    .why-card-big-sub {
+      margin-top: 8px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.92rem;
+    }
+
+    .why-card-small {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 55%;
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 6px;
+      padding: 28px;
+    }
+
+    .why-card-small-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .why-card-small-label {
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(0,0,0,0.7);
+    }
+
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .why-feature {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .why-feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      background: rgba(255,107,0,0.12);
+      border: 2px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+
+    .why-feature-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .why-feature-desc {
+      color: rgba(255,255,255,0.58);
+      line-height: 1.75;
+      font-size: 0.94rem;
+    }
+
+    #how {
+      background: var(--charcoal);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .step {
+      background: var(--dark);
+      padding: 38px 28px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4.8rem;
+      color: rgba(255,107,0,0.15);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      color: rgba(255,255,255,0.58);
+      line-height: 1.75;
+      font-size: 0.94rem;
+    }
+
+    .step-highlight {
+      background: linear-gradient(135deg, var(--orange), var(--red));
+    }
+
+    .step-highlight .step-num {
+      color: rgba(0,0,0,0.2);
+    }
+
+    .step-highlight .step-desc {
+      color: rgba(255,255,255,0.82);
+    }
+
+    #contact {
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: rgba(255,255,255,0.62);
+      line-height: 1.85;
+      font-size: 1.03rem;
+      margin: 16px 0 34px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--orange);
+      color: var(--black);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 3px;
+    }
+
+    .contact-item-text span,
+    .contact-item-text a {
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .contact-item-text a:hover {
+      color: var(--yellow);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--charcoal);
+      border: 2px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.98rem;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+    }
+
+    .form-group select option {
+      background: var(--charcoal);
+    }
+
+    .form-group textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      background: var(--orange);
+      color: var(--black);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 18px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 6px;
+    }
+
+    .form-submit:hover {
+      background: var(--yellow);
+    }
+
+    .form-note {
+      color: rgba(255,255,255,0.42);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(255,107,0,0.10);
+      border: 2px solid var(--orange);
+      border-radius: 4px;
+      padding: 16px 18px;
+      color: var(--orange);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    footer {
+      background: #050505;
+      border-top: 2px solid var(--orange);
+      padding: 60px 6% 36px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 44px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.46);
+      max-width: 320px;
+      line-height: 1.75;
+      margin-top: 12px;
+      font-size: 0.94rem;
+    }
+
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.52);
+      font-size: 0.94rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--yellow);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,0.34);
+      font-size: 0.84rem;
+    }
+
+    .footer-bottom span {
+      color: var(--orange);
+    }
+
+    @media (max-width: 950px) {
+      .why-grid,
+      #contact {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-stats {
+        position: static;
+        margin-top: 40px;
+        justify-content: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .why-visual {
+        height: 300px;
+      }
+
+      .why-card-big {
+        height: 220px;
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-bg-shape {
+        width: 100%;
+        clip-path: none;
+        opacity: 0.12;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-text {
+        font-size: 1.55rem;
+      }
+
+      .logo-img {
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Pro BI LLC Logo" class="logo-img">
+      <div class="logo-text">PRO <span>BI</span> LLC</div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#contact" class="nav-cta">Get Quote</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">Trusted Insurance Agency</div>
+
+      <h1 class="hero-title">
+        Protect What<br>
+        <span class="accent">Matters</span><br>
+        <span class="accent2">Most.</span>
+      </h1>
+
+      <p class="hero-sub">
+        At Pro BI LLC, we help individuals, families, and business owners find the right insurance coverage at the best possible rates. We compare trusted carriers for Home, Auto, Business, and Renters insurance so you get dependable protection without overpaying.
+      </p>
+
+      <div class="hero-trust">
+        ✔ Independent Agent &nbsp;•&nbsp; ✔ Multiple Carriers &nbsp;•&nbsp; ✔ Fast Free Quotes
+      </div>
+
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get My Free Quote</a>
+        <a href="#services" class="btn-outline">Explore Coverage</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Carrier Options</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support Access</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Quote Cost</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Home Insurance</span><span class="ticker-dot">◆</span>
+      <span>Auto Insurance</span><span class="ticker-dot">◆</span>
+      <span>Business Insurance</span><span class="ticker-dot">◆</span>
+      <span>Renters Insurance</span><span class="ticker-dot">◆</span>
+      <span>Fast Quotes</span><span class="ticker-dot">◆</span>
+      <span>Independent Agency</span><span class="ticker-dot">◆</span>
+      <span>Pro BI LLC</span><span class="ticker-dot">◆</span>
+      <span>Home Insurance</span><span class="ticker-dot">◆</span>
+      <span>Auto Insurance</span><span class="ticker-dot">◆</span>
+      <span>Business Insurance</span><span class="ticker-dot">◆</span>
+      <span>Renters Insurance</span><span class="ticker-dot">◆</span>
+      <span>Fast Quotes</span><span class="ticker-dot">◆</span>
+      <span>Independent Agency</span><span class="ticker-dot">◆</span>
+      <span>Pro BI LLC</span><span class="ticker-dot">◆</span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="services-header">
+      <div class="section-label">What We Cover</div>
+      <h2 class="section-title">Coverage Designed<br>For Real Life</h2>
+      <p>
+        We help you compare quality insurance options from reputable carriers, making it easier to protect your home, car, business, and personal property with confidence.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏡</div>
+        <div class="service-name">Home Insurance</div>
+        <p class="service-desc">
+          Protect your home, personal belongings, and financial future with coverage built for unexpected events. We help you compare policies that can include dwelling protection, liability coverage, and peace of mind for your family.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🚗</div>
+        <div class="service-name">Auto Insurance</div>
+        <p class="service-desc">
+          Find the right protection for your vehicle with flexible coverage options tailored to your needs. From liability and collision to full coverage plans, we shop multiple carriers to help you secure strong protection at a competitive rate.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <div class="service-name">Business Insurance</div>
+        <p class="service-desc">
+          Safeguard your business with policies designed to reduce risk and protect your operations. We can help you explore options for general liability, commercial property, and other business coverage based on your industry and goals.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔐</div>
+        <div class="service-name">Renters Insurance</div>
+        <p class="service-desc">
+          Get affordable protection for your belongings, liability exposure, and temporary living expenses after covered losses. Renters insurance is a smart way to protect what matters without stretching your monthly budget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="why-grid">
+      <div class="why-visual">
+        <div class="why-card-big">
+          <div class="why-card-big-title">Insurance Guidance You Can Trust</div>
+          <div class="why-card-big-sub">Pro BI LLC — personalized insurance support</div>
+        </div>
+
+        <div class="why-card-small">
+          <div class="why-card-small-num">100%</div>
+          <div class="why-card-small-label">Independent & Client Focused</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">We Work For You,<br>Not Just One Carrier</h2>
+
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">🔍</div>
+            <div>
+              <div class="why-feature-title">We Compare For You</div>
+              <p class="why-feature-desc">
+                We help simplify your search by comparing multiple insurance options, saving you time and helping you make a more confident decision.
+              </p>
+            </div>
+          </div>
+
+          <div class="why-feature">
+            <div class="why-feature-icon">💬</div>
+            <div>
+              <div class="why-feature-title">Personalized Service</div>
+              <p class="why-feature-desc">
+                You get one-on-one guidance from a real person who listens to your needs, explains your options clearly, and helps you choose suitable coverage.
+              </p>
+            </div>
+          </div>
+
+          <div class="why-feature">
+            <div class="why-feature-icon">💵</div>
+            <div>
+              <div class="why-feature-title">Value Without Compromise</div>
+              <p class="why-feature-desc">
+                Our goal is to help you find a strong balance between protection and affordability, so you can move forward with confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-label">Simple Process</div>
+    <h2 class="section-title">Get Started In<br>3 Easy Steps</h2>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Tell Us What You Need</div>
+        <p class="step-desc">
+          Share a few details about the type of insurance you are looking for and what matters most to you.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">We Compare Your Options</div>
+        <p class="step-desc">
+          We review available options and help identify coverage choices that fit your goals and budget.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Choose With Confidence</div>
+        <p class="step-desc">
+          We walk you through the details, answer your questions, and help you move forward with the right policy.
+        </p>
+      </div>
+
+      <div class="step step-highlight">
+        <div class="step-num">★</div>
+        <div class="step-title">Ready For A Quote?</div>
+        <p class="step-desc">
+          Contact Pro BI LLC today for a fast, no-obligation insurance quote tailored to your needs.
+        </p>
+        <a href="#contact" class="btn-primary" style="margin-top:20px; background:#000; color:var(--orange);">Request A Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-info">
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Let’s Find Your<br>Best Coverage</h2>
+
+      <p>
+        Reach out today to request your quote. We’re here to help you explore insurance options for your home, vehicle, business, or rental property with clear guidance and personal support.
+      </p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">🌐</div>
+          <div class="contact-item-text">
+            <strong>Website</strong>
+            <span>probillc.com</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <a href="mailto:sowmya@probillc.com">sowmya@probillc.com</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Phone</strong>
+            <a href="tel:13107073017">(310) 707-3017</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Location</strong>
+            <span>Texas, United States</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="john@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(555) 000-0000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Insurance Type</label>
+          <select required>
+            <option value="" disabled selected>Select Coverage Type</option>
+            <option>Home Insurance</option>
+            <option>Auto Insurance</option>
+            <option>Business Insurance</option>
+            <option>Renters Insurance</option>
+            <option>Multiple / Bundle</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us a little about what you're looking for..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send My Request</button>
+
+        <div class="form-success" id="formSuccess">
+          Thank you. Your request has been received and we’ll be in touch shortly.
+        </div>
+
+        <div class="form-note">
+          This form currently shows a confirmation message on the page. To receive submissions by email, connect it to a form service or backend.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <img src="logo.png" alt="Pro BI LLC Logo" class="logo-img">
+          <div class="logo-text">PRO <span>BI</span> LLC</div>
+        </div>
+        <p>
+          Independent insurance support for clients seeking reliable options for home, auto, business, and renters coverage.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <ul>
+          <li><a href="#services">Home Insurance</a></li>
+          <li><a href="#services">Auto Insurance</a></li>
+          <li><a href="#services">Business Insurance</a></li>
+          <li><a href="#services">Renters Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why Pro BI LLC</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sowmya@probillc.com">sowmya@probillc.com</a></li>
+          <li><a href="tel:13107073017">(310) 707-3017</a></li>
+          <li><a href="#">Texas, USA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 <span>Pro BI LLC</span>. All rights reserved.</p>
+      <p>Insurance Quotes for Home, Auto, Business & Renters</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      const isOpen = nav.style.display === 'flex';
+      nav.style.display = isOpen ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '72px';
+      nav.style.right = '6%';
+      nav.style.background = '#1a1a1a';
+      nav.style.padding = '20px 28px';
+      nav.style.borderRadius = '4px';
+      nav.style.border = '2px solid #FF6B00';
+      nav.style.gap = '18px';
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById('formSuccess');
+      msg.style.display = 'block';
+      e.target.reset();
+      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    }
+
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        const bottom = top + section.offsetHeight;
+        const link = document.querySelector('.nav-links a[href="#' + section.id + '"]');
+        if (link) {
+          link.style.color = (scrollY >= top && scrollY < bottom) ? '#FFD600' : '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
